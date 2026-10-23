@@ -7,3 +7,23 @@ select = ["E", "F", "I", "B", "UP"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[dependency-groups]
+dev = [
+    "fastapi>=0.115",
+    "httpx>=0.27",
+    "pydantic-settings>=2.4",
+    "pytest>=8.0",
+    "ruff>=0.6",
+    "uvicorn[standard]>=0.30",
+]
+
+[project]
+name = "uv-fastapi-example"
+version = "0.1.0"
+description = "FastAPI project"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]",
+]

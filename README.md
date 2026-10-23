@@ -35,3 +35,13 @@ curl localhost:8000/health
 
 ## Live link
 <Added in Week 2>
+
+
+## Progress 
+![](docs/images/images_setup.png)
+
+
+```bash
+curl http://127.0.0.1:8000/health
+{"status":"ok","app":"examate-rag","environment":"local"}
+```
