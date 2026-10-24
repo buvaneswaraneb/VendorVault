@@ -17,3 +17,8 @@ def health(settings: SettingsDep) -> dict:
 @app.get("/")
 def greet():
     return "welcome"
+
+
+@app.get("/")
+def useage():
+    return ""

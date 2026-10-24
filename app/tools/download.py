@@ -26,7 +26,6 @@ DELAY = 2  # seconds between requests: be polite to government servers
 
 robots = {}
 
-
 def allowed(url):
     root = f"{urlparse(url).scheme}://{urlparse(url).netloc}"
     if root not in robots:
@@ -44,8 +43,6 @@ def allowed(url):
 def name_for(url):
     name = os.path.basename(urlparse(url).path) or "index.html"
     return name.replace(" ", "_")
-
-
 
 
 def main(list_file):
