@@ -8,3 +8,4 @@ logs/
 data/raw/
 *.sqlite
 .DS_Store
+uv.lock

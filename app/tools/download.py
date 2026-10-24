@@ -12,13 +12,14 @@ import time
 from datetime import date
 from urllib.parse import urlparse
 from urllib.robotparser import RobotFileParser
+from pathlib import Path
 
 RAW = "data/raw"
 MANIFEST = "data/manifest.csv"
 HEADERS = {
     "User-Agent": (
-        "Logamoorthy/1.0 (Bastion Brief; contact:"
-        "logamoorthy143@gmail.com)"
+        "buvaneswaran/1.0 (Bastion Brief; contact:"
+        "buvaneswaran.e.b@gmail.com)"
     )
 }
 DELAY = 2  # seconds between requests: be polite to government servers
@@ -62,6 +63,7 @@ def main(list_file):
             urls = [u.strip() for u in fh]
 
         for url in urls:
+            print(url)
             if not url or url.startswith("#"):
                 continue
 
@@ -92,4 +94,5 @@ def main(list_file):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    currentFile = Path(__file__).resolve().parent / "urls.txt"
+    main(currentFile)
