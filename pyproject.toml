@@ -28,4 +28,5 @@ dependencies = [
     "dotenv>=0.9.9",
     "fastapi[standard]",
     "google-genai>=2.33.0",
+    "sqlalchemy>=2.1.6",
 ]
