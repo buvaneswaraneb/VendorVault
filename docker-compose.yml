@@ -1,0 +1,38 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: vendorvault-db
+    environment:
+      POSTGRES_USER: vendorvault
+      POSTGRES_PASSWORD: vendorvault
+      POSTGRES_DB: vendorvault
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vendorvault -d vendorvault"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  api:
+    build: .
+    container_name: vendorvault-api
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql+psycopg2://vendorvault:vendorvault@db:5432/vendorvault
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY}
+      APP_NAME: VendorVault
+      ENVIRONMENT: production
+      PRIMARY_MODEL: ${PRIMARY_MODEL:-gemini-3.8-flash}
+      SECONDARY_MODEL: ${SECONDARY_MODEL:-gemini-3.1-flash-lite}
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  pgdata:

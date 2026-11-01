@@ -1,18 +1,36 @@
-"""Request and response models. Empty for now; you add these from Session 4."""
+"""Request and response models for VendorVault API."""
 
-from pydantic import BaseModel
+from typing import Any
+
+from pydantic import BaseModel, Field
+
 
 class QueryRequest(BaseModel):
-    query:str
+    query: str = Field(..., description="The user prompt or query to send to the LLM")
+    stream: bool = Field(default=False, description="Whether to stream the response as SSE chunks")
+
 
 class QueryResponse(BaseModel):
-    answer:str
-    model_used:str
+    query: str
+    answer: str
+    model_used: str
+    prompt_tokens: int
+    completion_tokens: int
+    total_tokens: int
+    cost_usd: float
+    cost_inr: float
 
-class UseageResponse(BaseModel):
-    total_tokens:int
-    prompt_tokens:int
-    completion_tokens:int
-    estimated_cost_usd:int 
-    estimated_cost_inr:int
-    
+
+class UsageResponse(BaseModel):
+    total_requests: int
+    total_tokens: int
+    prompt_tokens: int
+    completion_tokens: int
+    estimated_cost_usd: float
+    estimated_cost_inr: float
+    by_model: dict[str, Any] = Field(default_factory=dict)
+    recent_calls: list[dict[str, Any]] = Field(default_factory=list)
+
+
+# Alias for backward compatibility with earlier naming
+UseageResponse = UsageResponse
