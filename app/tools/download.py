@@ -5,14 +5,14 @@ Saves files to data/raw/ and logs every file to data/manifest.csv.
 """
 import csv
 import hashlib
-import requests
 import os
-import sys
 import time
 from datetime import date
+from pathlib import Path
 from urllib.parse import urlparse
 from urllib.robotparser import RobotFileParser
-from pathlib import Path
+
+import requests
 
 RAW = "data/raw"
 MANIFEST = "data/manifest.csv"
