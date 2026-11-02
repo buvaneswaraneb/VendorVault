@@ -11,12 +11,12 @@ Commit after every class. Tag every Friday: `git tag week-N && git push origin w
 - [x] Tag week-1 pushed
 
 ## Week 2 (tag week-2 by Fri 30 Oct)
-- [ ] POST /chat calls an LLM and returns structured JSON
-- [ ] Streaming, timeouts, retry and a fallback model
-- [ ] Cost log + GET /usage
-- [ ] Docker Compose (API + Postgres/pgvector) runs
-- [ ] CI green, live link in README
-- [ ] Tag week-2 pushed
+- [x] POST /chat calls an LLM and returns structured JSON
+- [x] Streaming, timeouts, retry and a fallback model
+- [x] Cost log + GET /usage
+- [x] Docker Compose (API + Postgres/pgvector) runs
+- [x] CI green, live link in README
+- [x] Tag week-2 pushed
 
 ## Week 3 (tag week-3 by Fri 6 Nov)
 - [ ] Parser keeps page numbers and headings
@@ -28,4 +28,5 @@ Commit after every class. Tag every Friday: `git tag week-N && git push origin w
 ## Daily log
 | Date | What I did today | Commit |
 |---|---|---|
-| | | |
+| 2026-10-23 | Setup Week 1 milestones, health endpoint, polite downloader | 53de405 |
+| 2026-11-01 | Implemented Week 2: POST /chat, streaming, fallback model, cost tracking + /usage, Docker Compose with pgvector, full test suite | HEAD |
