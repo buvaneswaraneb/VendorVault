@@ -12,7 +12,6 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
-
 _ITEM_OR_PART = re.compile(
     r"^(?:part\s+[ivxlcdm]+|item\s+\d{1,2}[a-z]?(?:\.|\s|$))", re.IGNORECASE
 )
@@ -59,6 +58,12 @@ def _looks_like_heading(line: str) -> bool:
     return title_case_words >= max(2, len(words) - 2)
 
 
+def _is_boilerplate(line: str) -> bool:
+    """Exclude recurring document labels that appear above real headings."""
+    compact = line.casefold().replace(" ", "")
+    return compact.startswith("form10-") or compact.startswith("form10k")
+
+
 def extract_heading(text: str) -> str | None:
     """Return the first section heading appearing near the top of a PDF page.
 
@@ -67,17 +72,27 @@ def extract_heading(text: str) -> str | None:
     """
     candidates = [_normalise_line(line) for line in text.splitlines()]
     checked = 0
+    fallback_headings: list[str] = []
     for line in candidates:
         if not line:
             continue
-        if _looks_like_heading(line):
+        if _is_boilerplate(line):
+            continue
+        if _ITEM_OR_PART.match(line) or _NUMBERED_SECTION.match(line):
             return line
+        if _looks_like_heading(line):
+            fallback_headings.append(line)
         # Page headers and short boilerplate precede the real title occasionally;
         # after a modest prefix, text is much more likely to be body prose.
         checked += 1
         if checked >= 30:
             break
-    return None
+
+    # A filing's company name is often all-caps in the page header. Prefer a
+    # later title-case heading, but keep an all-caps heading as a useful fallback.
+    return next((line for line in fallback_headings if not line.isupper()), None) or (
+        fallback_headings[0] if fallback_headings else None
+    )
 
 
 def parse_pdf(pdf_path: str | Path) -> list[ParsedPage]:
