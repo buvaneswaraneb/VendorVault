@@ -1,5 +1,7 @@
 # VendorVault
 
+[![CI](https://github.com/buvaneswaraneb/VendorVault/actions/workflows/ci.yml/badge.svg)](https://github.com/buvaneswaraneb/VendorVault/actions/workflows/ci.yml)
+
 ## Problem
 
 Cited answers from US cybersecurity companies' 10-K filings, hardened against prompt-injection attacks.
@@ -69,6 +71,7 @@ docker compose ps
 
 ## Live link
 - Repository: [https://github.com/buvaneswaraneb/VendorVault](https://github.com/buvaneswaraneb/VendorVault)
+- Render deployment: [https://vendorvault-ipx1.onrender.com/](https://vendorvault-ipx1.onrender.com/)
 - Local API Docs: [http://localhost:8000/docs](http://localhost:8000/docs)
 - Containerized Health Check: [http://localhost:8000/health](http://localhost:8000/health)
 
