@@ -52,6 +52,16 @@ docker compose ps
   ```bash
   curl http://localhost:8000/health
   ```
+- **Cited Filings QA (POST /ask)**:
+  ```bash
+  curl -X POST http://localhost:8000/ask \
+    -H "Content-Type: application/json" \
+    -d '{"query": "How did CrowdStrike describe the July 19 incident and its financial impact in its 10-K?"}'
+  ```
+- **Document Indexing Status**:
+  ```bash
+  curl http://localhost:8000/documents/status
+  ```
 - **Chat (Structured JSON)**:
   ```bash
   curl -X POST http://localhost:8000/chat \
@@ -68,6 +78,13 @@ docker compose ps
   ```bash
   curl http://localhost:8000/usage
   ```
+
+### Document Ingestion & Chunking
+To chunk, embed, and store 500+ pages of 10-K filings in pgvector:
+```bash
+python -m app.services.indexer 500
+```
+
 
 ## Live link
 - Repository: [https://github.com/buvaneswaraneb/VendorVault](https://github.com/buvaneswaraneb/VendorVault)

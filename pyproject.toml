@@ -29,6 +29,7 @@ dependencies = [
     "dotenv>=0.9.9",
     "fastapi[standard]",
     "google-genai>=2.33.0",
+    "pgvector>=0.5.1",
     "psycopg2-binary>=2.9.13",
     "pypdf>=5.0.0",
     "sqlalchemy>=2.1.6",

@@ -1,1 +1,6 @@
 file,source_url,downloaded_on,bytes,sha256
+data/pdf/Form 10-K for Crowdstrike Holdings INC filed 03:10:2025.pdf,https://www.sec.gov/edgar/searchedgar/companysearch,2026-10-23,1559865,264beeb12df29a29f81afadb794fb54dd0cdb86adfdcf702fcdfc256f68af978
+data/pdf/Form 10-K for Palo Alto Networks INC filed 08:29:2025.pdf,https://www.sec.gov/edgar/searchedgar/companysearch,2026-10-23,2543834,6c207aca33228beff768dd1460b83f02305bfcf008676b0dda656cd7d0f5ed03
+data/pdf/Form 10-K for Palo Alto Networks INC filed 09:01:2023.pdf,https://www.sec.gov/edgar/searchedgar/companysearch,2026-10-23,1082015,9bcc59f351f60b8909602da3a1ff264e6b113cf269eeee1c09d6d140341aaf57
+data/pdf/Form 10-K for Palo Alto Networks INC filed 09:06:2024.pdf,https://www.sec.gov/edgar/searchedgar/companysearch,2026-10-23,2405892,0744e68c38d76f036386dc0bd9935877cb88582a11452e6e6adea1dc6d314268
+data/pdf/Form 10-K for Palo Alto Networks INC filed 09:10:2026.pdf,https://www.sec.gov/edgar/searchedgar/companysearch,2026-10-23,1840675,eb52bea122132069e4d0c81a86c58ce2ed43506bd2c501aa818d916541ad4667

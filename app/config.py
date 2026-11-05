@@ -18,7 +18,9 @@ class Settings(BaseSettings):
     )
     primary_model: str = "gemini-3.8-flash"
     secondary_model: str = "gemini-3.1-flash-lite"
-    database_url: str = "sqlite:///gemini_usage.db"
+    embedding_model: str = "gemini-embedding-001"
+    embedding_dimensions: int = 768
+    database_url: str = "postgresql+psycopg2://vendorvault:vendorvault@localhost:5432/vendorvault"
     llm_timeout_seconds: float = 15.0
     llm_max_retries: int = 2
     usd_to_inr_rate: float = 84.0
